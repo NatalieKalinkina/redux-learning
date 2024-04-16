@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch()
-  const cash = useSelector(store => store.reducer.cash)
+  const cash = useSelector(state => state.rootReducer.cash.cash)
   console.log(cash)
 
   const addCash = (cash) => {

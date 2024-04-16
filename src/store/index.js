@@ -1,37 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import App from './App.jsx'
-import './index.css'
-import { Provider } from 'react-redux'
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import { cashReducer } from './cashReducer';
+import { customerReducer } from './customerReducer';
 
-const defaultState = {
-  cash: 0,
-}
+const rootReducer = combineReducers({
+  cash: cashReducer,
+  customer: customerReducer
+});
 
-const cashReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case "ADD_CASH":
-      return { ...state, cash: state.cash + action.payload }
-    case "GET_CASH":
-      return { ...state, cash: state.cash - action.payload }
-    default:
-      return state
-  }
-}
-
-const customerReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case "ADD_CUSTOMER":
-      return { ...state, cash: state.cash + action.payload }
-    case "GET_CUSTOMERS":
-      return { ...state, cash: state.cash - action.payload }
-    default:
-      return state
-  }
-}
-
-const store = configureStore({
-  reducer: {
-    cash: cashReducer,
-    customer: customerReducer,
-  }
-})
+export const store = configureStore({
+  reducer: { rootReducer }
+});
