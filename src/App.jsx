@@ -40,7 +40,7 @@ function App() {
       {customers.length > 0 ?
         <div>
           {customers.map(customer =>
-            <div style={{ fontSize: "2rem", border: '1px solid white', padding: "10px", marginTop: "20px" }} onClick={() => removeCustomer(customer)}>{customer.name}</div>
+            <div key={customer.id} style={{ fontSize: "2rem", border: '1px solid white', padding: "10px", marginTop: "20px" }} onClick={() => removeCustomer(customer)}>{customer.name}</div>
           )}
         </div>
         :
